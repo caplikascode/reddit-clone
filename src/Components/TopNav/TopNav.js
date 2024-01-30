@@ -1,5 +1,7 @@
 import React from "react";
 import { useState } from "react";
+import './TopNav.css'
+import SearchBar from "../SearchBar/SearchBar";
 
 export default function TopNav()  {
 
@@ -16,15 +18,8 @@ export default function TopNav()  {
     return (
     <header className={active ? "activeNav" : ""}>
      <h1 className="logo">Reddit</h1>
-    <nav > 
-            <div className="search-bar">
-                <form>
-                    <input
-                       type="text" 
-                       placeholder="Search for content!"
-                    />
-                </form>
-            </div>
+     <nav > 
+        <SearchBar />
     </nav>
    </header>
     )
