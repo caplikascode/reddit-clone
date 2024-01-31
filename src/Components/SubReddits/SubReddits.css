@@ -6,6 +6,7 @@
   border-radius: .25rem;
   min-width: 338.961px;;
   position: relative;
+  margin-top: 1.5rem;
 }
 
 .subreddits-section h2, .mobile-subreddits-section h2 {

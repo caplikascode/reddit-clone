@@ -1,12 +1,12 @@
 .post-section {
-  background-color: white;
   flex-grow: 2;
 }
 
-@media only screen and (min-width: 375px) {
+@media only screen and (max-width: 480px) {
   .post-section {
-      width: 370px;
+      width: 400px;
   }
+ 
 }
 @media only screen and (min-width: 668px) {
   .post-section {

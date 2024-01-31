@@ -23,25 +23,38 @@ header{
 nav {
   display: flex;
   justify-content: center;
-  width: 80%;
-}
+  width: 100%;
 
+}
 
 .logo {
-  margin-left: 50px;
+  width: 65px;
+  height: 65px;
+  margin: 0rem 0.5rem 0rem 6rem;
 }
+
 
 @media screen and (max-width: 480px) {
   header {
     display: flex;
     justify-content: center;
     flex-direction: column;
+    margin-top: 20%;
   }
   .logo{
     margin-left: 0;
   }
-  .search-bar form input {
-    padding: 20px 60px 20px 32px;
-    width: 60%;
+  
+
+  .activeNav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin-top: 0%;
+    transition: 0.4s;
+    z-index: 999;
+    height: 200px;
   }
+  
 }

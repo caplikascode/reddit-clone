@@ -19,11 +19,3 @@ export default function SubReddits() {
     </div>
 )
 }
-
-export const toggleModal = () => {
-  const target = document.querySelector('.mobile-subreddits-container')
-  target.style.left = target.style.left === '15px'  ? '-350px' : '15px'
-  document.querySelector('.post').addEventListener('click', () => {
-      target.style.left = '-350px'
-  })
-  }

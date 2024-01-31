@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import './TopNav.css'
 import SearchBar from "../SearchBar/SearchBar";
+import logo from "./reddit_logo-removebg-preview.png"
 
 export default function TopNav()  {
 
@@ -17,8 +18,13 @@ export default function TopNav()  {
 
     return (
     <header className={active ? "activeNav" : ""}>
-     <h1 className="logo">Reddit</h1>
-     <nav > 
+      <img 
+         className="logo" 
+         src={logo}
+         alt="logo"
+      />
+     <h1 className="logo-text">Reddit</h1>
+     <nav> 
         <SearchBar />
     </nav>
    </header>
