@@ -23,8 +23,7 @@ header{
 nav {
   display: flex;
   justify-content: center;
-  width: 100%;
-
+  width: 60%;
 }
 
 .logo {

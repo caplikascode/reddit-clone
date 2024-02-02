@@ -1,10 +1,18 @@
 import React from "react";
-import postImage from './post-image.jpg'
-import { BiUpArrow, BiDownArrow, BiSolidComment } from 'react-icons/bi'
+import { BiUpArrow, BiDownArrow, } from 'react-icons/bi'
 import './SinglePost.css'
+import { useEffect, useState } from 'react'
+import { TiMessage } from 'react-icons/ti'
 
-export default function SinglePost(props) { 
-  
+
+export default function SinglePost(props) {   
+  const [time, setTime] = useState()
+  let imgCheck = props.img
+  if (imgCheck.includes('jpg') || imgCheck.includes('png') || imgCheck.includes('jpeg') || imgCheck.includes('gif')) {
+      imgCheck = props.img
+  } else {
+      imgCheck = false
+  }
 
 
   const toggleVotesColor = (e) => {
@@ -17,53 +25,52 @@ const removeVotesColor = (e) => {
   e.target.closest('div').children[1].style.color = 'black'
 }
 
+ useEffect(() => {
+      const curDate = new Date()
+      const date = new Date(props.timeAgo * 1000)
+      const daysAgo = curDate.getDate() - date.getDate()
+      const hoursAgo = (curDate.getHours() - date.getHours())
+      let output = (daysAgo * 24) + hoursAgo
+
+      if(daysAgo > 1) {
+          output = `${daysAgo} days ago`
+      } else if(daysAgo === 1) {
+          output = `${daysAgo} day ago`
+      } else if(hoursAgo > 1) {
+          output = `${hoursAgo} hours ago`
+      } else {
+          output = `${hoursAgo} hour ago`
+      }
+      setTime(output)
+  },[])
+
+    if (time < 1) return
 
 
   return (
-    <section className="post">
-         
-        <div className="post-block">
-          <div className="votes">
-              <span className='up-votes'><BiUpArrow onMouseOver={toggleVotesColor}  onMouseLeave={removeVotesColor} /></span>
-                <p className='num-votes'>2</p>
-              <span className='down-votes'><BiDownArrow onMouseOver={toggleVotesColor}  onMouseLeave={removeVotesColor}/></span>
+     
+      <section className='post'>
+          <div className='votes'>
+              <span className='up-votes'><BiUpArrow onMouseOver={toggleVotesColor} onMouseLeave={removeVotesColor}/></span>
+              <p className='num-votes'>{props.upVotes}</p>
+              <span className='down-votes'><BiDownArrow onMouseOver={toggleVotesColor} onMouseLeave={removeVotesColor}/></span>
           </div>
-          <div className="post-top">
-              <h1 className="post-title">{props.title}</h1>
-              <p>{props.timeAgo}</p>
+          <div className='post-content'>
+              <h2 className="post-title">{props.title}</h2>
+              <p>{props.text ? props.text : null}</p>
+              {imgCheck ? (
+                  <img src={props.img}/>
+              ) : null }
+              <div className='border-line'/>
+              <div className='post-information'>
+                  <p className='author'>{props.author}</p>
+                  <p className='time-ago'>{time}</p>
+                  <div className='comment-icon-section'>
+                      <span>{props.comments}</span>
+                     <TiMessage className="message-icon" />
+                  </div>
+              </div>
           </div>
-          <a  className="post-subreddit" href="#">{props.subbreddit}</a>
-          <img 
-                src={postImage}
-                alt="post"
-               />
-            <div className="post-footer">
-                  <p>{props.author}</p>
-                  <span className="comments"><BiSolidComment /></span>
-            </div>
-        </div>
-       
-       
-        <div className="post-block">
-          <div className="votes">
-              <span className='up-votes'><BiUpArrow/></span>
-                <p className='num-votes'>2</p>
-              <span className='down-votes'><BiDownArrow/></span>
-          </div>
-          <div className="post-top">
-              <h1 className="post-title">{props.title}</h1>
-              <p>{props.timeAgo}</p>
-          </div>
-          <a href="#"  className="post-subreddit" >{props.subbreddit}</a>
-          <img 
-                src={postImage}
-                alt="post"
-               />
-            <div className="post-footer">
-                  <p className="author">{props.author}</p>
-                  <span className="comments"><BiSolidComment /></span>
-            </div>
-        </div>  
-    </section>
+      </section>
   )
 }

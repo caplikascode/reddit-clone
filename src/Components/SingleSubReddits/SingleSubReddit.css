@@ -1,9 +1,8 @@
 .single-subreddit{
    display: flex;
    justify-content: left;
-   flex-direction: row;
    gap: 0.5rem;
-   width: 20%;
+   width: 100%;
    min-height: 4rem;
    align-items: center;
    padding-left: 1rem;
@@ -12,9 +11,19 @@
   width: 2.2rem;
   height: 2.2rem;
   border-radius: 5rem;
-  border: 4px solid grey;
 }
 
 .single-subreddit p {
   font-size: 1.2rem;
+}
+
+.single-subreddit:hover {
+  background-color: rgba(214, 214, 214, 0.321);
+}
+
+.active-reddit {
+    background-color: rgba(0, 76, 255, 0.143);
+    border-left: 5px solid #ce031e;
+    color: #ce031e;
+    padding-right: 5px;
 }
