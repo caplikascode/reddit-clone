@@ -1,8 +1,9 @@
 import React from "react";
 import { useState } from "react";
 import './TopNav.css'
-import SearchBar from "../SearchBar/SearchBar";
 import logo from "./reddit_logo-removebg-preview.png"
+import { useDispatch } from 'react-redux'
+import { filterFromSearch } from '../Slices/postsSlice/postsSlice'
 
 export default function TopNav()  {
 
@@ -15,18 +16,32 @@ export default function TopNav()  {
          }
      })
 
+    const dispatch = useDispatch()
+
+    const filterPosts = (e) => {
+        const target = e.target
+        const data = target.value
+        dispatch(filterFromSearch(data))
+    }
+
+
 
     return (
     <header className={active ? "activeNav" : ""}>
-      <img 
-         className="logo" 
-         src={logo}
-         alt="logo"
-      />
-     <h1 className="logo-text">Reddit</h1>
-     <nav> 
-        <SearchBar />
-    </nav>
+       <div className="logo">
+         <img 
+            src={logo}
+            alt="logo"
+       />  
+       <p className="logo-text">Reddit</p>
+      </div>
+      <form className="search margin">
+         <input
+            type="text" 
+            placeholder="Search for content!"
+            onChange={filterPosts}
+         />
+    </form>
    </header>
     )
     

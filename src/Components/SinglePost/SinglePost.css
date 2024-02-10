@@ -63,6 +63,7 @@
   justify-content: space-between;
   align-items: center;
   min-height: 3rem;
+  min-width: 4rem;
   width: 100%;
   font-size: 1rem;
   font-weight: 300;
@@ -70,21 +71,16 @@
 
 .author {
   text-align: left;
-  width: 15rem;
-  order: 1
 }
 
 .time-ago {
   text-align: center;
-  order: 2;
-  margin-right: 10rem;
 }
 
 .comment-icon-section {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  order: 3
 }
 
 .comment-icon-section span {
@@ -97,43 +93,42 @@
   height: 1.5rem;
 }
 
-@media only screen and (min-width: 375px) and (max-width: 667px) {
-  .votes {
-      display: none;
-  }
-  .post-information {
-      display: none;
-  }
-  .border-line {
-      display: none
-  }
-}
 
-@media only screen and (max-width: 480px) {
+
+
+@media only screen and (max-width: 600px) {
   .votes {
-    display: none;
+    gap: 0;
+    font-size: 1rem;
+    left: 0.4rem;
+    padding-right: 10px;
   }
+
   .post {
-    flex-direction: column;
-    margin-top: 35%;
-    padding: 0;
+    height: 100%;
+    width: 350px;
+    margin: 0;
+    margin-top: 3rem;
+    padding: 10px;
   }
-  .post-block {
-    height: 300px;
-    width: 320px;
-    margin: 20% 0% 0% 0%;
-    padding: 0% 4% 6% 4%;
+  .post-content img {
+    width: 100%;
+    height: 100%;
   }
-   
-  .post-top h1 {
-    font-size: 5vw;
+
+  .post-content {
+    font-size: 4vw;
   }
-  
-  .post-top p {
-    font-size: 2.5vw;
+
+  .post-title {
+    font-size: 4vw;
   }
-  
-  .post-subreddit {
-     font-size: 2.5vw;
+
+  .post-information {
+    font-size: 3.2vw;
+  }
+
+  .time-ago{
+    flex:none;
   }
 }
